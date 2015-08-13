@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>EON Maps</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position:absolute;
+        top:0;
+        bottom:0;
+        width:100%;
+      }
+    </style>
+
+    <link href="../lib/mapbox.css" rel="stylesheet" />
+    <script src="../lib/mapbox.js"></script>
+
+    <script src="../bower_components/pubnub/web/pubnub.min.js"></script>
+	<script src="../bower_components/subsub/subsub.js"></script>
+    <script src="../pubnub-mapbox.js"></script>
+
+  </head>
+  <body>
+    <div id='map'></div>
+    
+    <script>
+     
+
+
+        var pubnub = PUBNUB({ subscribe_key: 'your pubnub subkey', ssl: true });
+        var channel = 'bike-map';
+ 
+        eon.map({
+        pubnub: pubnub,
+        id: 'your mapbox map name',
+        mb_token: 'your mapbox api token',
+        mb_id: 'your mapbox project id',
+        channel: channel,
+         
+        options: {
+          zoomAnimation: false,
+        },
+        marker: function (latlng, data) {
+
+            var marker = new L.Marker(latlng, {
+                icon: L.icon({
+                    iconUrl: 'https://d30y9cdsu7xlg0.cloudfront.net/png/15274-200.png',
+                    iconSize: [24, 24]
+                })
+            });
+
+            var popup = '';
+            if (data) {
+                popup = 'Courier ' + data + '';
+            }
+            else {
+                var popup = 'No data available';
+            }
+
+            marker.bindPopup(popup);
+
+            return marker;
+        }
+      });
+     
+
+      var point = {
+          latlng: [37.370375, -97.756138]
+      };
+
+      
+
+    </script>
+  </body>
+</html>
