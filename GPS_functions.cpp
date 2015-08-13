@@ -161,28 +161,9 @@ boolean printGPGGA(char* str, char* GPS_formatted, GPSWaypoint* wayPoint)
   if (buf[0] == '1')
   {
 	  Serial.println("float numbers tada");
-	  //p = nextToken(p, buf); // number of satellites
-	 
-	  //Serial.print(atoi(buf));
-	  //Serial.println(" satellite(s) found!");
-	 
-
-
-
-
-
-	/*  LFile f = Drv.open("Position.txt", FILE_WRITE);
-	  if (f){
-		  char text_write_buffer[50];
-		  sprintf(text_write_buffer, "\n%s", str);
-
-		  f.println(text_write_buffer);
-		  f.close();
-	  }*/
+	  
 
     // GPS fix
- 
-    
     
     const int coord_size = 8;
     char lat_fixed[coord_size],lon_fixed[coord_size];
@@ -207,9 +188,6 @@ boolean printGPGGA(char* str, char* GPS_formatted, GPSWaypoint* wayPoint)
 	Serial.println(wayPoint->latitude);
 
     Serial.println(lat_direction);
-    //strcat(SMScontent, "\nLatitude: ");
-    //strcat(SMScontent,lat_fixed);
-    //strcat(SMScontent,lat_direction);
     
     Serial.print("Longitude:");
     //Serial.println(lon_fixed);
@@ -342,16 +320,7 @@ void getGPSData(gpsSentenceInfoStruct &g_info, char* GPS_formatted, GPSWaypoint*
 		loopCounter++;
   }
 
-  //test
-
-  //char gpgga[] = "$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M,,*47";
-  //char gpgtv[] = "$GPVTG,054.7,T,034.4,M,005.5,N,010.2,K";
-
-  //GPS_fix = printGPGGA((char*)gpgga, GPS_formatted, positionData);    //printGPGGA returns TRUE if the GPGGA string returned confirms a GPS fix.
-  //if (GPS_fix){
-	 // Serial.println("Gps fixed!");
-	 // readSpeed((char*)gpgtv, positionData);
-  //}
+ 
 
 }
 
@@ -378,14 +347,7 @@ void convertCoords(float latitude, float longitude, const char* n_or_s, const ch
         lat_return *= -1;
     }
 
-    /*
-    Longitude	00004.5337,W	-->	00d 04.5337' W
-    00 degrees 4.5337 minutes WEST
-    00 +  (4.5337 / 60)  = 0.0755616
-    Because it is West, the number becomes negative.
-    -0.0755616
-    */
-
+    
     int lon_deg_int = int(longitude / 100);		
     float longitude_float = longitude - lon_deg_int * 100;
     lon_return = lon_deg_int + longitude_float / 60;
