@@ -5,5 +5,6 @@ over a GPRS connection using the [PubNub LinkIt ONE library](https://github.com/
 
 ### Before You Start 
 
-The project requires user accounts for [PubNub](https://www.pubnub.com/) and [Mapbox](https://www.mapbox.com/projects/).  
+The project requires user accounts for [PubNub](https://www.pubnub.com/) and [Mapbox](https://www.mapbox.com/projects/).  Real-time bike tracking map requires libraries from [eon-map](https://github.com/pubnub/eon-map). 
 Full details on downloading and installing the Arduino IDE and LinkIt ONE SDK then configuring the IDE and upgrading the board firmware are provided in the [LinkIt ONE quick start guide](http://labs.mediatek.com/site/global/developer_tools/mediatek_linkit/get-started/index.gsp). Complete this before you continue if you haven’t already set up your development environment. 
+
